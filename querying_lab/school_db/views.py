@@ -32,9 +32,11 @@ def problem_one(request):
 def problem_two(request):
     # Find all instructors hired prior to 2010
     # Order by hire date
-    data_visualization = [item for item in students]
+    instructors = Instructor.objects.filter(hire_date__lt="2010-01-01")
+
+    data_visualization = [item for item in instructors]
     context = {
-        'instructors': None
+        'instructors': instructors
     }
     return render(request, 'school/two.html', context)
 
