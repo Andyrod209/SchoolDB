@@ -19,7 +19,7 @@ def index(request):
 def problem_one(request):
     # Find all students who have a GPA greater than 3.0. 
     # Order the data by highest GPAs first.
-
+    data_visualization = [item for item in students]
     context = {
         'students': None
     }
@@ -28,7 +28,7 @@ def problem_one(request):
 def problem_two(request):
     # Find all instructors hired prior to 2010
     # Order by hire date
-
+    data_visualization = [item for item in students]
     context = {
         'instructors': None
     }
@@ -37,7 +37,7 @@ def problem_two(request):
 def problem_three(request):
     # Find all students who have a A+ in any class and are NOT getting a C+ in any class. 
     # Order the data by student's first name alphabetically.
-
+    data_visualization = [item for item in students]
     context = {
         'student_courses': None
     }
@@ -46,7 +46,7 @@ def problem_three(request):
 def problem_four(request):
     # Find all students who are taking the Programming class. 
     # Order by their grade. 
-
+    data_visualization = [item for item in students]
     context = {
         'student_courses': None
     }
@@ -55,7 +55,7 @@ def problem_four(request):
 def problem_five(request):
     # Find all students getting an A in the Programming class. 
     # Order by last name.
-
+    data_visualization = [item for item in students]
     context = {
         'student_courses': None
     }
@@ -64,7 +64,7 @@ def problem_five(request):
 def problem_six(request):
     # Find all students with a GPA less than 3.0 who are getting an A in Programming class.
     # Order by GPA.
-
+    data_visualization = [item for item in students]
     context = {
         'student_courses': None
     }
