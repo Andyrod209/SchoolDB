@@ -32,7 +32,7 @@ def problem_one(request):
 def problem_two(request):
     # Find all instructors hired prior to 2010
     # Order by hire date
-    instructors = Instructor.objects.filter(hire_date__lt="2010-01-01").order_by("-hire_date", "first_name")
+    instructors = Instructor.objects.filter(hire_date__lt="2010-01-01").order_by("hire_date", "first_name")
 
     data_visualization = [item for item in instructors]
     context = {
@@ -44,7 +44,7 @@ def problem_three(request):
     # Find all students who have a A+ in any class and are NOT getting a C+ in any class. 
     # Order the data by student's first name alphabetically.
 
-    high_grade_student = StudentCourse.objects.filter(grade='A+').exclude(student__studentcourse__grade='C+') 
+    high_grade_student = StudentCourse.objects.filter(grade='A+').exclude(student__studentcourse__grade='C+').order_by("student__first_name") 
     data_visualization = [item for item in high_grade_student]
     context = {
         'high_grade_student': high_grade_student
@@ -55,7 +55,7 @@ def problem_four(request):
     # Find all students who are taking the Programming class. 
     # Order by their grade. 
 
-    programming_student = StudentCourse.objects.filter(course_id="4")
+    programming_student = StudentCourse.objects.filter(course_id="4").order_by("grade")
     data_visualization = [item for item in programming_student]
     context = {
         'programming_student': programming_student
@@ -65,7 +65,7 @@ def problem_four(request):
 def problem_five(request):
     # Find all students getting an A in the Programming class. 
     # Order by last name.
-    programming_student_with_a=StudentCourse.objects.filter(course_id='4', grade='A')
+    programming_student_with_a=StudentCourse.objects.filter(course_id='4', grade='A').order_by("student__last_name")
 
     data_visualization = [item for item in programming_student_with_a]
     context = {
@@ -77,7 +77,7 @@ def problem_six(request):
     # Find all students with a GPA less than 3.0 who are getting an A in Programming class.
     # Order by GPA.
     programming_student_with_a=StudentCourse.objects.filter(course_id='4', grade='A')
-    low_gpa_student = programming_student_with_a.filter(student__gpa__lt=3.0)
+    low_gpa_student = programming_student_with_a.filter(student__gpa__lt=3.0).order_by("-student__gpa")
 
     data_visualization = [item for item in low_gpa_student]
     context = {
