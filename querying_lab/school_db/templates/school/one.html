@@ -5,8 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Problem One</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
 </head>
 <body>
-    <h1>Students with GPA Over 3.0</h1>
+    <div class="center-text">
+        <h1>Students with GPA Over 3.0</h1>
+        <table class="center-table">
+            <thead>
+                <tr>
+                    <th>First Name</th><th>Last Name</th><th>GPA</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in good_students %}
+                <tr>
+                    <td>{{student.first_name}}</td><td>{{student.last_name}}</td><td>{{student.gpa}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

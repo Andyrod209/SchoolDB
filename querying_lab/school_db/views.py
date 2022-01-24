@@ -19,9 +19,13 @@ def index(request):
 def problem_one(request):
     # Find all students who have a GPA greater than 3.0. 
     # Order the data by highest GPAs first.
-    data_visualization = [item for item in students]
+
+    good_students = Student.objects.filter(gpa__gt=3.0).order_by("-gpa", "first_name") 
+    data_visualization = [item for item in good_students]
+    
+
     context = {
-        'students': None
+        'good_students': good_students
     }
     return render(request, 'school/one.html', context)
 
