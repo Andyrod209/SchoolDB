@@ -5,8 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Problem Six</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
 </head>
 <body>
-    <h1>Great Programmers under 3.0</h1>
+    <div class="center-text">
+        <h1>Great Programmers under 3.0</h1>
+        <table class="center-table">
+            <thead>
+                <tr>
+                    <th>First Name</th><th>Last Name</th><th>GPA</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in low_gpa_student %}
+                <tr>
+                    <td>{{item.student.first_name}}</td><td>{{item.student.last_name}}</td><td>{{item.student.gpa}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
