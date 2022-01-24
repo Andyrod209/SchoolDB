@@ -32,7 +32,7 @@ def problem_one(request):
 def problem_two(request):
     # Find all instructors hired prior to 2010
     # Order by hire date
-    instructors = Instructor.objects.filter(hire_date__lt="2010-01-01")
+    instructors = Instructor.objects.filter(hire_date__lt="2010-01-01").order_by("-hire_date", "first_name")
 
     data_visualization = [item for item in instructors]
     context = {
@@ -44,7 +44,7 @@ def problem_three(request):
     # Find all students who have a A+ in any class and are NOT getting a C+ in any class. 
     # Order the data by student's first name alphabetically.
 
-    high_grade_student = StudentCourse.objects.filter(grade='A+').exclude(student__studentcourse__grade='C+')
+    high_grade_student = StudentCourse.objects.filter(grade='A+').exclude(student__studentcourse__grade='C+') 
     data_visualization = [item for item in high_grade_student]
     context = {
         'high_grade_student': high_grade_student
@@ -54,9 +54,11 @@ def problem_three(request):
 def problem_four(request):
     # Find all students who are taking the Programming class. 
     # Order by their grade. 
-    data_visualization = [item for item in students]
+
+    programming_student = StudentCourse.objects.filter(course_id="4")
+    data_visualization = [item for item in programming_student]
     context = {
-        'student_courses': None
+        'programming_student': programming_student
     }
     return render(request, 'school/four.html', context)
 
